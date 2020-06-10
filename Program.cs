@@ -1,35 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Idexersample
+namespace ConsoleApp1
 {
     class Program
     {
-        string[] str= new string[6];
-        public string this[int index]
+        void reverse_words_string(string str)
         {
-            get => str[index];
-            set => str[index] = value;
+            string[] strarray = str.Split(" ");
+            Array.Reverse(strarray);
+            str = string.Join(" ", strarray);
+
+           // for (int i = 0; i < strarray.Length; i++)
+
+              //  Console.WriteLine(strarray[i]);
+
+            Console.WriteLine("Reversed words in a String: " +str);
         }
-    }
-    class program1
-    {
+        void reverse_char_word_string(string str)
+        {
+            string[] strarray = str.Split(" ");
+            for (int i = 0; i < strarray.Length; i++)
+            {
+                char[] word = strarray[i].ToCharArray();
+                Array.Reverse(word);
+                strarray[i] = new string (word);
+                
+            }
+            str = string.Join(" ", strarray);
+            Console.WriteLine("Reversed words in a String: " + str);
+        }
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter the string to reverse the words:");
+            string s = Console.ReadLine();
             Program p = new Program();
-            p[1] = "aaa";
-            p[2] = "bbb";
-            p[3] = "ccc";
-            p[4] = "ddd";
-            p[5] = "eee";
-            p[0] = "fff";
-            for (int i = 1; i <= 5; i++)
-                Console.WriteLine(p[i]);
-            Console.WriteLine(p[0]);
-            Console.ReadLine();
+            p.reverse_words_string(s);
+            p.reverse_char_word_string(s);
+
         }
     }
 }
